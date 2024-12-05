@@ -1,0 +1,57 @@
+{{#partial "title"}}{{ entry.title }}{{/partial}}
+
+
+{{#partial "content"}}
+        <section>
+            <div class="container">
+                <div class="entry-list single">
+                    <article>
+                        <h1>{{ blogEntry.title }}</h1>
+                        <time datetime={{ blogEntry.date }}>{{ blogEntry.formattedDate }}</time>
+                        <div class="entry">
+                            <p> {{blogEntry.content}}</p>
+                            <div class="tags">
+                                    {{#each blogEntry.tags}}
+                                        <span class="tag">{{this}}</span>
+                                    {{/each}}
+
+                            </div>
+                            <p class=""><a class="buttonedit-button" href="/entries/{{ blogEntry.slug }}/edit">Edit Entry</a></p>
+                            <form action="/entries/{{blogEntry.slug}}/delete" method="post" class="delete-form">
+                                <input type="submit" value="Delete Entry" class="button-common delete-button" >
+                                <p></p>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="entry-comments">
+            <div class="container">
+                    <h2>Comments</h2>
+                    {{#if blogEntry.comments.length}}
+                    {{#each blogEntry.comments}}
+                        <div class="comment">
+                            <strong>{{ author }}</strong>
+                            <time datetime={{ date }}>{{ formattedDate }}</time>
+                            <p>{{ content }}</p>
+                        </div>
+                    {{/each}}
+                    {{else}}
+                        <p>There are no comments yet. Add one to be the first one.</p>
+                    {{/if}}
+
+
+                    <div class="new-comment">
+                        <form method="post" action="/entries/{{ blogEntry.slug }}/comment">
+                              <label for="name">Name</label>
+                              <input type="text" name="name" id="name"><br>
+                              <label for="comment">Comment</label>
+                              <textarea rows="5" name="comment" id="comment"></textarea>
+                              <input type="submit" value="Post Comment" class="button">
+                        </form>
+                    </div>
+            </div>
+        </section>
+{{/partial}}
+{{> base.hbs}}
