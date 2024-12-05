@@ -31,15 +31,7 @@ public class Main {
         BlogEntry blogEntry2 = new BlogEntry("The absolute worst day I’ve ever had","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut rhoncus felis, vel tincidunt neque. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "rhshs5362", "sports", "hobbies", "climbing", "running", "marathon");
         BlogEntry blogEntry3 = new BlogEntry("That time at the mall"," Lorem ipsum odor amet, consectetuer adipiscing elit. Nulla morbi lacus cursus donec, class curabitur tortor? Dignissim porta elit varius efficitur; curabitur faucibus. Lacinia natoque volutpat sit rhoncus risus magnis quisque torquent. Sociosqu pretium posuere, ut elementum natoque augue parturient ut litora. Class porta condimentum mattis rutrum elementum phasellus vestibulum; nisi condimentum. Hendrerit penatibus curabitur dapibus ullamcorper; nascetur lacus arcu.t", "parkdirt27563", "family", "elder", "life");
         BlogEntry blogEntry4 = new BlogEntry("Dude, where’s my car?","Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", "christian-lksub", "house", "repair");
-        BlogEntry blogEntry5765 = new BlogEntry("jcks", "ljkdhcl", "cskj", "skbjc", "kjshbck");
-        System.out.println("TAGS IN EXAMPLE" + blogEntry5765.getTags());
-        if(blogEntry5765.getTags() != null) {
-            System.out.println("TAGS IN EXAMPLE" +   blogEntry5765.getTags());
-            System.out.println("TAGS class" +   blogEntry5765.getTags().getClass().getName());
 
-        } else {
-            System.out.println("TAGS IN EXAMPLEare null");
-        }
         dao.addEntry(blogEntry1);
         dao.addEntry(blogEntry2);
         dao.addEntry(blogEntry3);
@@ -77,15 +69,6 @@ public class Main {
             }
         });
 
-        //Checks if user password exists and is correct to be able to delete a post
-        before("/entries/:slug/delete", (req, res) -> {
-            if ((req.cookie("password") == null || !req.cookie("password").equals(ADMIN_PASSWORD))) {
-                setFlashMessage(req, "Whoops, please sign in first!");
-                res.redirect("/password");
-                halt(); //halt is for the program not to do anything else (stop)
-                //if username exists we redirect to sign in
-            }
-        });
 
         //This checks that if you try to edit an entry without having the right password,
         // that it doesn't allow you to edit that page.

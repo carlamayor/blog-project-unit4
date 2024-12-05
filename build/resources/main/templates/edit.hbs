@@ -6,13 +6,17 @@
                     <h2>Edit Entry</h2>
                     <form method="post" action="/entries/{{blogEntry.slug}}/edit">
                         <label for="title"> </label>
-                        <input type="text" name="title" id="title" ><br>
+                        <input type="text" name="title" id="title"  value="{{blogEntry.title}}"><br>
                         <label for="content"></label>
-                        <textarea rows="5" name="content" id="content"></textarea>
+                        <textarea rows="5" name="content" id="content">{{blogEntry.content}}</textarea>
                         <label for="tags"> </label>
-                        <input type="text" name="tags" id="tags" ><br>
+                        <input type="text" name="tags" id="tags" value="{{blogEntry.tags}}">{{blogEntry.tags}}<br>
                         <input type="submit" value="Save Entry" class="button">
                         <a href="/entries/{{blogEntry.slug}}" class="button button-secondary">Cancel</a>
+                        <form action="/entries/{{blogEntry.slug}}/delete" method="post" class="delete-form">
+                            <input type="submit" value="Delete Entry" class="button-common delete-button" >
+                            <p></p>
+                        </form>
                     </form>
                 </div>
             </div>
