@@ -25,7 +25,7 @@ public class BlogEntry {
         this.content = content;
         this.date = LocalDateTime.now();
         this.comments = new ArrayList<>();
-        this.tags = tags!= null ? new HashSet<>(Arrays.asList(tags)): new HashSet<>();
+        this.tags = tags.length != 0 ? new HashSet<>(Arrays.asList(tags)) : new HashSet<>();
         try {
             Slugify slugify = new Slugify();
             slug = slugify.slugify(title);

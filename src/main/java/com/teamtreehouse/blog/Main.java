@@ -146,7 +146,8 @@ public class Main {
         // creates the edit page of the corresponding slug
         get("/entries/:slug/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("blogEntry", dao.findEntryBySlug(req.params("slug")));
+            BlogEntry blogEntry = dao.findEntryBySlug(req.params("slug"));
+            model.put("blogEntry", blogEntry);
             return new ModelAndView( model, "edit.hbs");
         }, new HandlebarsTemplateEngine());
 
